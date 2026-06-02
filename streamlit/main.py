@@ -20,7 +20,10 @@ if uploaded_file is not None:
     st.write("正在检测…")
 
     # 加载 YOLO 模型
-    model = YOLO("car_4.0.pt")  # 替换为你的权重文件路径
+    from pathlib import Path
+
+    MODEL_PATH = Path(__file__).parent / "car_4.0.pt"
+    model = YOLO(str(MODEL_PATH))
 
     # 模型预测
     results = model.predict(img_array)
